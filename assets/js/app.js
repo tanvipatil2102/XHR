@@ -83,8 +83,12 @@ const createcards = (data) => {
     postContainer.innerHTML = data.map(ele => { 
         return `
         <div class="card mb-4 text-capitalize" id ="${ele.id}">
-            <div class="card-header">${ele.title}</div>
-            <div class="card-body">${ele.body}</div>
+            <div class="card-header">
+                 <h4 class="m-0">${ele.title}</h4>
+            </div>
+            <div class="card-body">
+                    <p class="m-0">${ele.body}</p>
+                    </div>
             <div class="card-footer d-flex justify-content-between">
                 <button class="btn btn-primary" onclick="onEditBtn(this)">Edit</button>
                 <button class="btn btn-danger" onclick="onDeleteBtn(this)">Delete</button>
@@ -170,8 +174,8 @@ const onSubmitBtnHandler = () => {
     xhr.send(JSON.stringify(obj));
 
     xhr.onload = function(){
-        getUpdateId[0] = obj.title;
-        getUpdateId[1] = obj.body;
+        getUpdateId[0].innerHTML = `<h4 class="m-0">${obj.title}</h4>`;
+        getUpdateId[1].innerHTML = `<p class="m-0">${obj.body}</p>`;
         getUpdateId[2] = obj.userId;
         postsForm.reset()
         addPostBtn.classList.remove("d-none");
